@@ -8,6 +8,10 @@ body {
   color: rgb(var(--bs-tertiary-color-rgb));
 }
 
+.text-highlight {
+  font-weight: 600;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
