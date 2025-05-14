@@ -37,6 +37,20 @@ body {
   height: 32rem;
 }
 
+.circle-icon {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.circle-icon i {
+  font-size: 4rem;
+  color: white;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
