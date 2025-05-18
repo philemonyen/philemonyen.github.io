@@ -114,6 +114,8 @@
 </head>
 
 <body>
+  <!-- Dark/Light Mode Toggle Button -->
+  <!-- icon definitions -->
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -133,8 +135,7 @@
         d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
     </symbol>
   </svg>
-
-
+  <!-- Toggle Button Definition-->
   <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
@@ -184,7 +185,7 @@
 
   </div>
 
-
+  <!-- NAVBAR -->
   <header data-bs-theme="dark">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
@@ -224,8 +225,9 @@
     </nav>
   </header>
 
+  <!-- Content-->
   <main>
-
+    <!-- Top Carousel-->
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
@@ -283,11 +285,6 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-
-
-    <!-- Marketing messaging and featurettes
-  ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
 
@@ -506,15 +503,9 @@
           <p><em class="lead">09/2023 - 08/2025</em></p>
           <p><em class="lead">AidVoice Lab</em></p>
           <ul>
-            <li>Utilized open-source ASR models, PyTorch, Docker, and gRPC to implement and deploy Microservices with
-              high performance and scalability</li>
-            <li>Leveraged Audinate Dante API to engineer custom Audio Network Controller and achieved &lt;1ms
-              transmission latency </li>
-            <li>Engaged in research and experimentation within the realm of Audio
-              Sequence Processing with a focus on Adaptive Filtering and Sequence
-              Modeling </li>
-            <li>Researched over 20 academic papers and experimented with 30+ classification extensions, ultimately
-              developing 2 models for audio generation and classification</li>
+            <li>Use AI to Listen and Speak</li>
+            <li>Integrate AI-driven audio analysis and synthesis with low-latency networked communication, combining
+              applied research and scalable microservice deployment to enable intelligent real-time audio systems</li>
           </ul>
         </div>
       </div>
@@ -522,13 +513,11 @@
       <div class="row featurette">
         <div>
           <h2 class="featurette-heading fw-normal lh-1">Software Developer Intern</h2>
-          <pre><em class="lead">Socle Technology</em></pre>
+          <pre><em class="lead">Foxconn Group</em></pre>
           <ul>
-            <li>Built a PO recognition tool with an OCR library to extract data from PDFs into CSVs, streamlining
-              workflows with a user-friendly UI and substantially reducing both processing time and errors</li>
-            <li>Designed and implemented a sales commission calculator that automatically extracts, organizes, and
-              computes monthly POS data from 5 distributors, eliminating manual errors and cutting processing time to
-              under 3 minutes with only one operator required</li>
+            <li>Solve operational bottlenecks with practical software solutions</li>
+            <li>Engineered automation tools for OCR-driven document extraction and high-volume sales data computation,
+              streamlining workflows and reducing human error</li>
           </ul>
         </div>
       </div>
@@ -542,14 +531,10 @@
         <div class="col-md-7 order-md-2">
           <h2 class="featurette-heading fw-normal lh-1">Automated Study Group Formation Platform</h2>
           <ul>
-            <li>Leveraged 2 AI algorithms, CSP and Simulated Annealing, to construct a
-              study group formation model considering students’ personal information
-              and academic performance</li>
-            <li>Achieved balanced grouping among various aspects including gender,
-              personality traits, academic capability, personal interest, and learning
-              prospective</li>
-            <li>Headed a student development team of 5 in developing a web application
-              integrating the model and published onto the UofT system</li>
+            <li>Boost learning quality with AI-driven group optimization</li>
+            <li>Applied CSP and Simulated Annealing to build a student grouping model balancing academic and personal
+              attributes, and led a team of five to develop and deploy a web application integrated into the UofT system
+            </li>
           </ul>
         </div>
         <div class="col-md-5 order-md-1">
@@ -567,12 +552,10 @@
         <div class="col-md-7 order-md-2">
           <h2 class="featurette-heading fw-normal lh-1">Course Recommendation System</h2>
           <ul>
-            <li>Developed a course recommendation engine to aid course selection by
-              providing suggestions maximizing the likelihood of acquiring high grades</li>
-            <li>Employed Collaborative Filtering to obtain academic performance
-              predictions from existing grades, personality traits, and personal interests</li>
-            <li>Integrated UofT CS program requirements and significantly shortened
-              course selection process from days to 1-2 hours</li>
+            <li>Support education with AI-powered course planning</li>
+            <li>Built a recommendation engine using collaborative filtering to predict academic outcomes based on
+              grades, interests, and personality traits, integrating program requirements to reduce course selection
+              time from days to just 1 to 2 hours</li>
           </ul>
         </div>
         <div class="col-md-5 order-md-1">
@@ -592,13 +575,23 @@
       </center>
       <div class="row featurette">
         <h2 class="featurette-heading fw-normal lh-1">Transformers</h2>
-        <p class="lead">Transformer</p>
-        <p class="lead">Efficient Transformer</p>
+        <h4>Transformer</h4>
+        <p>Discover how the Transformer revolutionized deep learning with unparalleled parallelism and context
+          understanding</p>
+        <h4>Efficient Transformer</h4>
+        <p>Explore how efficient Transformer variants push the boundaries of speed, memory, and modeling power in modern
+          deep learning</p>
         <h2 class="featurette-heading fw-normal lh-1">State Space Models</h2>
-        <p class="lead">State Space Model</p>
-        <p class="lead">Structued State Space Model (S4)</p>
-        <p class="lead">Diagonal State Space Model (DSS)</p>
-        <p class="lead">Mamba</p>
+        <h4>State Space Model</h4>
+        <p>Uncover how control theory's state space models are revolutionizing deep learning for sequential data</p>
+        <h4>Structued State Space Model (S4)</h4>
+        <p>Explore how S4 enhances sequence modeling by combining continuous-time dynamics with efficient computation
+        </p>
+        <h4>Diagonal State Space Model (DSS)</h4>
+        <p>Delve into diagonal state space models that simplify computations while preserving modeling power</p>
+        <h4>Mamba</h4>
+        <p>Discover Mamba's selective state space approach that achieves Transformer-level performance with linear-time
+          efficiency</p>
       </div>
 
       <hr class="featurette-divider" id="contact_link">
