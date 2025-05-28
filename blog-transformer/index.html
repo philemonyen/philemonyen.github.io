@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Ping Yen</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    <script src="../template/assets/js/color-modes.js"></script>
+
+    <link href="../template/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="../template/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="../template/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="../template/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="../template/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .bi {
+            width: 1em;
+            height: 1em;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+    <!-- Custom styles for this ../template -->
+    <link href="../template/carousel/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Ping Yen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#blog_link">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content-->
+    <main>
+
+        <div class="container marketing">
+
+            <center>
+                <h1>Transformer</h1>
+            </center>
+
+            <hr class="divider" id="about_link">
+
+            <div class="row featurette">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                    <p class="lead blog-content">
+                        Transformer has become the most prevailing model in the field of sequence modeling
+                        since publishing thanks to its capability to efficiently handle long-range dependencies (LRD).
+                        By leveraging the attention mechanism, Transformer successfully addresses the main drawbacks of
+                        previous CNN and RNN approaches and achieve state-of-the-art performance in various long
+                        sequence handling tasks across several fields including natural language, video, and music.
+                        Through this article, I aim to deliver a concise elaboration on the Transformer model, providing
+                        a thorough understanding about how it achieve achieve effective sequence modeling.</p>
+                    <h3>Limitations of CNN & RNN</h3>
+                    <p class="lead blog-content">
+                        Before Transformer, sequence modeling tasks are majorly tackled with CNNs and RNNs,
+                        which both are straightforward choices with regard of their natures. The sliding kernels of CNNs
+                        capture necessary information from the input data, and the recurrence of RNNs enables the reuse
+                        of past information. However, these behaviors come with fatal shortcomings when handling very
+                        long sequences. CNNs do not keep track of the positions of extracted features, and hence the
+                        number of operations required to relate information from two arbitrary input or output positions
+                        grows in the distance between them, resulting in significantly large computational costs when
+                        dealing with long sequences. Meanwhile, RNN’s sequential nature precludes parallelization within
+                        training samples, which becomes critical at longer sequence lengths as memory constraints limit
+                        batching across samples.</p>
+                    <p class="lead blog-content">
+                        Nonetheless, we can still mark some necessary
+                        characteristics for an effective sequence modeling
+                        methodology. First, it must perform some form of feature extraction or encoding from the input
+                        sequence. Second, It must keep track of the positions of the features to accurately capture the
+                        relationship between features. Lastly, it must reuse its current output for future predictions
+                        to keep track of the sequential dependencies, just like RNN.</p>
+                    <p class="lead blog-content">
+                        In the next sections, we will go through the key components of the Transformer and learn how
+                        they deliver the required features respectively.
+                    </p>
+
+                    <h3>Attention</h3>
+                    <img src="attention-structure.png" class="blog-img" />
+                    <p class=" lead blog-content">
+                    Transformer leverages the attention mechanism to perform a new approach of feature extraction
+                    from the input sequence. Attention allows an element to “attend” to different parts of the
+                    sequence and dynamically determine the weights or importance/attention scores. Better than RNN
+                    which encode everything in “black box” state vectors, we are able to visualize the learned
+                    parameters throughout training and evaluation processes and observe how the model actually
+                    behaves. As this concept is similar to CNN, Cordonnier et al. [5] conducted a study showing an
+                    equivalent relationship between self-attention and convolution.
+                    </p>
+                    <p class="lead blog-content">
+                        Attentions can be computed within the same sequence or between different sequences. Attentions
+                        computed within the same sequence, also known as self-attention, captures the dependencies of an
+                        element on other parts of the sequence. With the similar idea, attentions computed across
+                        different sequences models the connection between an element and the other sequence.
+                    </p>
+                    <p class="lead blog-content">
+                        Attention is computed with the following formula
+                    </p>
+                    <img src="attention-eq.png" class="blog-img" />
+                    <p class="lead blog-content">
+                        where Q, K, V stands for query, key, and value vectors, respectively. The query vector
+                        represents the element that is attending the sequence. The key vector represents the importance
+                        of each part of the sequence that is going to be attended with respect to the query vector.
+                        Lastly, the value vector represents the information that should be retrieved from the sequence.
+                        Putting them all together, we can easily tell that the formula determines the output from the
+                        value vector with the importance obtained via the scaled dot product between query and key
+                        vectors. All query, key, and value vectors are derived from the input vector through
+                        corresponding projection matrices learned via training.
+                    </p>
+                    <p class="lead blog-content">
+                        To further utilize attention to model complex patterns, multi-head self-attention (MHSA) is
+                        proposed to capture information from different abstraction levels.
+                    </p>
+                    <img src="multi-head.png" class="blog-img" />
+                    <p class="lead blog-content">
+                        Given h attention heads, the input sequence is projected to query, key, and value vectors h
+                        times with h different learned linear projections of corresponding dimensionalities in parallel.
+                        Then, concatenate the h attention outputs and project again to encode all essential
+                        characteristics in the final output.
+                    </p>
+
+                    <h3>Positional Encoding</h3>
+                    <p class="lead blog-content">
+                        In order to incorporate positional information into attention computation, Vaswani et al.[1]
+                        employed the absolute sinusoidal positional encoding to embed raw position in a latent space.
+                    </p>
+                    <img src="position-encoding.png" class="blog-img" />
+                    <p class="lead blog-content">
+                        In future studies, researchers implemented different encoding approaches such as learned
+                        positional encoding and relative positional encoding. These topics will be discussed in the next
+                        article talking about Efficient Transformers. In conclusion, by adding the positional encoding
+                        results to the input embeddings, the attention mechanism is able to take positional information
+                        into account and acquire more accurate sequential feature representations.
+                    </p>
+
+                    <h3>Model Architecture</h3>
+                    <img src="transformer-architecture.png" class="blog-img" />
+                    <p class="lead blog-content">
+                        Finally, with the concept of attention and positional encoding in mind, we are able to dive into
+                        the data flow and architecture of the Transformer.
+                    </p>
+                    <p class="lead blog-content">
+                        The model consists of two major components: encoder and decoder. The encoder extracts
+                        information from the input sequence with MHSA, and result in a series of encoder output states,
+                        where each state represents a token in the input sequence. Then, at every timestep, the decoder
+                        takes in an encoder output state and the current predicted sequence to obtain the next token
+                        prediction. This data flow enables Transformer to present a recurrence manner and reuse its
+                        current output for future prediction just like RNN.
+                    </p>
+                    <p class="lead blog-content">
+                        The encoder is in charge of learning the features, dependencies, and relationships within the
+                        input sequence and encodes them into encoder states as output. The encoder can be decomposed
+                        into a MHSA layer plus a position-wise fully-connected feedforward layer, with residual
+                        connections around each layer following by layer normalization.
+                    </p>
+                    <p class="lead blog-content">
+                        The structure of the decoder is slightly different from the encoder as it contains two
+                        multi-head attention layers. The masked MHSA layer learns features and relationships from the
+                        current output sequence, and the mask ensures predictions for position i can depend only on the
+                        known outputs at positions before i. The other multi-head attention layer takes in the output of
+                        the masked MHSA layer and encoder output states one at a time to obtain prediction.
+                    </p>
+                    <p class="lead blog-content">
+                        In summary, Transformer successfully presents the three characteristics mentioned earlier about
+                        a effective sequence model. Through the leveraging of attention mechanism and positional
+                        encoding, Transformer is able to extract and model sequential features with the consideration of
+                        positions. Additionally, the model architecture is designed to recreate the recurrence manner,
+                        enabling Transformer to generate reasonable predictions regarding of the input and current
+                        output.
+                    </p>
+
+                    <h3>Performance & Complexity</h3>
+                    <p class="lead blog-content">
+                        The graph above depicts the performance of several effective CNN- and RNN-based models as well
+                        as the Transformer in a machine translation task. We can easily observe that Transformer
+                        achieves the best performance while requiring the least training cost. This performance makes
+                        Transformer the top candidate in sequence modeling as we are able to obtain high-quality
+                        outcomes in a short time.
+                    </p>
+                    <img src="result.png" class="blog-img" />
+                    <p class="lead blog-content">
+                        In this section, we will take a look at the performance of Transformer and discuss how
+                        self-attention make Transformer more preferable on sequence modeling tasks from the complexity
+                        aspect.
+                    </p>
+                    <img src="complexity.png" class="blog-img" />
+                    <p class="lead blog-content">
+                        The main difference between CNN, RNN, and Transformer is the strategies they use to handle
+                        sequential features. The image above depicts the complexities of self-attention, convolution,
+                        and recurrent layers during training and inferencing, where n, d, and k stands for sequence
+                        length, representation dimensionality, and kernel size, respectively. In most cases, we work
+                        under the condition where n is smaller than d, and hence making self-attention layers have the
+                        smallest complexity during training. Self-attention can further be restricted to focus on a
+                        neighborhood of size r when dealing with very long sequences to further decrease the training
+                        cost. while separable convolution layer can reduce layer complexity, its optimal complexity is
+                        still identical to self-attention layer.
+                    </p>
+                    <p class="lead blog-content">
+                        Another remarkable point about the table above is the maximum path length. The key factor
+                        affecting the ability to learn LRD is the length of the paths forward and backward signals have
+                        to traverse in the network. The shorter the path, the better the learning quality. Convolution
+                        networks require a stack of layers to connect all pairs of input and output positions,
+                        increasing the longest paths between any two positions in the network. Similar behavior appears
+                        for RNNs as they gradually forget long-term memory, and hence backward traversals are necessary
+                        for memory retrieving. For self-attention, every element attend to every part of the sequence in
+                        one single layer, consequently neglect the need of stacked layers or backward traversals. Even
+                        if we restrict self-attention to focus on a fixed-size neighborhood, the max path length scales
+                        by only a constant.
+                    </p>
+                    <p class="lead blog-content">
+                        From both theoretical and empirical perspectives, we proved that Transformer is more powerful
+                        while more cost-friendly. Transformer combines the advantages of CNNs and RNNs and set up a new
+                        benchmark for sequence models. Several extensions of Transformer have been proposed to tackle
+                        different fields of sequential data like video and music and achieve state-of-the-art
+                        performances.
+                    </p>
+
+                    <h3>Conclusion</h3>
+                    <p class="lead blog-content">
+                        In this article, we went through the core of the Transformer, learning about the mechanics that
+                        enable its dominance in the field of sequence modeling. Despite of the powerfulness, Transformer
+                        comes with some drawbacks. The computational and memory complexity scale quadratically to the
+                        length of the input sequence, which hinders its efficiency and effectivity to handle long
+                        sequences in practice. Additionally, Transformer is only able to handle unidirectional patterns
+                        given its model architecture, and thus it performs poorly on tasks presenting bidirectional
+                        patterns like question answering. In the next article, I will write about some well-known
+                        efficient Transformers and discuss how they enhance the vanilla Transformer.
+                    </p>
+
+                    <h3>Citation</h3>
+                    <ol>
+                        <li class="lead">
+                            Ashish Vaswani, , Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez,
+                            Lukaz Kaiser, Illia Polosukhin, “Attention Is All You Need” arXiv: 1706.03762v7 [cs.CL] 2
+                            Aug 2023
+                        </li>
+                        <li class="lead">
+                            Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, Lukasz Kaiser “Universal
+                            Transformers” arXiv:1807.03819v3 [cs.CL] 5 Mar 2019
+                        </li>
+                        <li class="lead">
+                            Angelos Katharopoulos, Apoorv Vyas, Nikolaos Pappas, François Fleuret, “Transformers are
+                            RNNs: Fast Autoregressive Transformers with Linear Attention”, arXiv:2006.16236v3 [cs.LG] 31
+                            Aug 2020
+                        </li>
+                        <li class="lead">
+                            Yao-Hung Hubert Tsai, Shaojie Bai, Makoto Yamada, Louis-Philippe Morency Ruslan
+                            Salakhutdinov “Transformer Dissection: A Unified Understanding of Transformer’s Attention
+                            via the Lens of Kernel”
+                        </li>
+                        <li class="lead">
+                            Jean-Baptiste Cordonnier, Andreas Loukas, Martin Jaggi, “On the Relationship Between
+                            Self-Atention and Convolutional Layers” arXiv:1911.03584v2 [cs.LG] 10 Jan 2020
+                        </li>
+                    </ol>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+                        viewBox="0 0 24 24">
+                        <title>Product</title>
+                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+                    </svg>
+                    <small class="d-block mb-3 text-body-secondary">&copy; 2017–2025</small>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script defer src="../template/assets/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
+
+</body>
+
+</html>

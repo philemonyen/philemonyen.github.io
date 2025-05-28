@@ -10,15 +10,21 @@ body {
 
 .text-highlight {
   font-weight: 600;
+  color: orange
 }
 
 h1 {
   font-size: 3.5rem;
   margin-bottom: 4rem;
+  color: white;
 }
 
 h2 {
   margin-bottom: 0.5rem;
+}
+
+h3 {
+  margin: 1em 0 0 0;
 }
 
 a {
@@ -44,7 +50,7 @@ a:hover {
 
 /* Carousel base class */
 .carousel {
-  height: 600px;
+  height: 95vh;
 }
 
 .carousel-inner {
@@ -89,11 +95,13 @@ a:hover {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+
 /* rtl:begin:ignore */
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
 }
+
 /* rtl:end:ignore */
 
 
@@ -101,7 +109,8 @@ a:hover {
 ------------------------- */
 
 .divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  margin: 5rem 0;
+  /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -114,20 +123,29 @@ a:hover {
   margin-bottom: auto;
 }
 
+.blog-content {
+  text-indent: 2em;
+}
+
+.blog-img {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
 /* rtl:end:remove */
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
- 
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.4;
-  }
 
-  .featurette-heading {
-    font-size: 50px;
-  }
+/* Bump up size of carousel content */
+.carousel-caption p {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
 
+.featurette-heading {
+  font-size: 50px;
+}
