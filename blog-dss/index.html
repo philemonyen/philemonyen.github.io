@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Ping Yen</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    <script src="../template/assets/js/color-modes.js"></script>
+
+    <link href="../template/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="../template/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="../template/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="../template/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="../template/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .bi {
+            width: 1em;
+            height: 1em;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+    <!-- Custom styles for this ../template -->
+    <link href="../template/carousel/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Ping Yen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#blog_link">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content-->
+    <main>
+
+        <div class="container marketing">
+
+            <center>
+                <h1>Diagonal State Space Model</h1>
+            </center>
+
+            <hr class="divider" id="about_link">
+
+            <div class="row featurette">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                    <p class="blog-content">
+                        By leveraging the HiPPO theory, S4 serves as a successful enhancement of linear state space
+                        layer (LSSL) that possesses the capability to model long sequential data accurately and
+                        efficiently. However, nothing is flawless. In order to fully employ the HiPPO theory, S4
+                        implements complex parameterization (DPLR) and computation algorithms that require high-level
+                        knowledge in advance linear algebra, which consequently raise the difficulty of understanding
+                        algorithm details and conducting further analysis. With the motivation of simplifying S4,
+                        Diagonal State Space (DSS) is introduced. In this article, we will go through the details about
+                        the derivation of DSS, learning how DSS achieve complexity reduction without performance
+                        sacrifice</p>
+                    <h3>Motivation</h3>
+                    <p class="blog-content">
+                        S4 acquires its strong performance in long sequence modeling with a trade-off of model
+                        complexity. In order to fully leverage the HiPPO theory, S4 parameterizes the learned state
+                        spaces using a Diagonal Plus Low Rank (DPLR) structure and employs several reduction steps and
+                        linear algebraic techniques to achieve efficient computation, resulting in a procedure that is
+                        difficult to understand, implement, and analyze. Surprisingly, Ankit [1] discovered that S4
+                        still holds its performance when the low-rank component of the state matrix was removed, and
+                        further embark the investigation in a simplified version of S4 - Diagonal State Space (DSS).</p>
+                    <h3>Diagonal State Space</h3>
+                    <h4>Zero-Order Hold Discretization</h4>
+                    <p class="blog-content">
+                        Before we dive into the core of DSS, let’s first talk about the discretization technique DSS
+                        used - Zero-Order Hold (ZOH) discretization.</p>
+                    <img src="zoh.png" class="blog-img" />
+                    <p class="blog-content-no-indent">
+                        where the ZOH assumption assumes the value of a sample of is held constant for a duration of one
+                        sample interval. Comparing to the general bilinear transformation (GBT) discretization employed
+                        in S4, ZOH is very simple and easy to implement. Nonetheless, the simplicity of ZOH may suffer
+                        from aliasing and distortion when facing high-frequency dynamics.
+                    </p>
+                    <h4>Core Proposition</h4>
+                    <p class="blog-content">
+                        DSS is built around a core proposition defined in [1], which is stated as follows:
+                    </p>
+                    <img src="proposition.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Let’s translate and summarize this proposition with plain English:
+                        For any given state space with
+                        a well-behaved state matrix, there exists a DSS, parameterized by a complex vector w and a
+                        diagonal matrix Lambda, computing the same kernel. In other words, this proposition states that
+                        DSS possesses adequate expressivity to represent any well-behaving state space, despite of its
+                        simplicity.</p>
+                    <p class="blog-content-no-indent">Unfortunately, there is an underlying risk of numerical
+                        instability if we directly used DSS
+                        kernels acquired via this equation. There is a chance for the element-wise exponential matrix P
+                        to contain large positive values, which will make real parts of elements Lambda positive and
+                        consequently result in unstable training on long inputs. To address this issue, two variations
+                        of DSS are proposed, DSS-EXP and DSS-SOFTMAX.</p>
+                    <h4>Variation I - DSS-EXP</h4>
+                    <p class="blog-content">
+                        This variation augments the proposition by posing an additional restriction to Lambda. By
+                        restricting the real part of elements of Lambda to be negative, the possibility of encountering
+                        very large values during kernel computation is directly eliminated. However, this
+                        straightforward approach comes with an obvious disadvantage of limiting the learning space of
+                        Lambda, which consequently reduces model expressivity. Moreover, it is unclear whether the
+                        restriction of negative real parts could be detrimental for some tasks. As a result, DSS-EXP
+                        provides a simple approach to achieve stable model training while its performance trade-off may
+                        restrain its application in specific fields.
+                    </p>
+                    <h4>Variation II - DSS-SOFTMAX</h4>
+                    <img src="dss-softmax.png" class="blog-img" />
+                    <p class="blog-content">
+                        DSS-SOFTMAX handles numerical instability with the concept of softmax normalization. Since
+                        ordinary softmax function can have singularities over the complex field and technically does not
+                        fully resolve the issue of large positive real parts, an augmented version of softmax function
+                        is introduced in [2]. To avoid computing large positive real parts while training, the augmented
+                        softmax finds and subtracts the largest real part among row elements. To make the augmented
+                        softmax well-defined on the entire complex field, row sums are computed as the square of the
+                        modulus to prevent complex division. As a result, DSS-SOFTMAX successfully handles both
+                        numerical instability and function singularities without sacrificing the learning space of
+                        Lambda.
+                    </p>
+
+                    <h3>Expressivity & Performance</h3>
+                    <p class="blog-content">
+                        After learning about the simplification algorithm, let’s move on to how DSS actually performs
+                        both theoretically and practically. From the theoretical perspective, we will show that DSS is
+                        able to dynamically handle memories depending on the input information. From the practical
+                        perspective, we will compare DSS’s performance on sequence modeling tasks with S4 and other
+                        effective models.
+                    </p>
+                    <h4>Theoretical Expressivity - DSS-EXP</h4>
+                    <p class="blog-content">
+                        With computed Lambda and ZOH timestep , we can obtain the discretization with respect to the
+                        kernel obtained via equation (1)
+                    </p>
+                    <img src="dss-exp-discretization.png" class="blog-img" />
+                    <p class="blog-content-no-indent">When computing the SSM recurrence, the computations of N
+                        coordinates are independent since the
+                        state matrix is diagonal, so the i-th coordinate can be easily obtained as</p>
+                    <img src="dss-exp-element.png" class="blog-img" />
+                    <p class="blog-content-no-indent">
+                        Note that the real parts of lambdas are negative with respect to the restriction of DSS-EXP, we
+                        can derive the following two analyses:
+                    </p>
+                    <img src="dss-exp-analysis.png" class="blog-img" />
+                    <p class="blog-content-no-indent">By depicting DSS-EXP’s behaviors at two extreme conditions, we can
+                        tell that DSS-EXP has expected
+                        expressivity to present different scales of history memorization depending on the input context
+                        ranging from complete memorization to full forgetting, making it a good candidate for handling
+                        long range dependency (LRD).</p>
+                    <h4>Theoretical Expressivity - DSS-SOFTMAX</h4>
+                    <p class="blog-content">With computed Lambda and ZOH timestep Delta, we can obtain the
+                        discretization with respect to the kernel obtained via equation (2)</p>
+                    <img src="dss-softmax-discretization.png" class="blog-img" />
+                    <p class="blog-content-no-indent">With the same independence implied with diagonal state matrix, we
+                        can compute the SSM recurrence for each coordinate as</p>
+                    <img src="dss-softmax-element.png" class="blog-img" />
+                    <p class="blog-content-no-indent">In order to prevent computing the large sequence length L
+                        directly, we compute with a intermediate state</p>
+                    <img src="dss-softmax-intermediate.png" class="blog-img" />
+                    <p class="blog-content-no-indent">In the equation above, we drop the coordinate index i for
+                        simplicity and let p be the identity function indicating whether the real part is greater than
+                        zero. Straightforwardly, we will conduct our analysis based on the outcome of p.</p>
+                    <img src="dss-softmax-analysis.png" class="blog-img" />
+                    <p class="blog-content-no-indent">We obtain the same conclusion as the previous derivation for
+                        DSS-EXP, indicating the DSS-SOFTMAX also possess the desired expressivity to accurately handle
+                        LRD.</p>
+                    <h4>Empirical Evaluation</h4>
+                    <p class="blog-content">Last but not least, let’s look at the empirical evaluation of DSS presented
+                        in [1].</p>
+                    <img src="evaluation.png" class="blog-img" />
+                    <p class="blog-content-no-indent">We can see that DSS obtains comparable performance as S4 in LRD
+                        tasks and, same as S4,
+                        outperforms Transformer variants by 20% or more in overall accuracy. In conclusion, DSS is
+                        proved to have outstanding ability in long sequence modeling from both theoretical and practical
+                        point of view, enabling it to be a potential resolution candidate in future LRD tasks</p>
+
+                    <h3>Conclusion</h3>
+                    <p class="blog-content">
+                        In this article, we go through the core components of the study about DSS, and conclude with its
+                        spectacular performance. As an extension of S4 that exploits the HiPPO theory, another research
+                        ([2]) were done to investigate the optimal parameterization and initialization for DSS and
+                        developed further variants. The studies on DSS, S4, and Mamba open up a new direction of
+                        approaching sequence modeling tasks, and further researches must be done to convert them into a
+                        foundation model like Transformer.
+                    </p>
+
+                    <h3>Citation</h3>
+                    <ol>
+                        <li class="blog-content-no-indent">
+                            Ankit Gupta, Albert Gu, Jonathan Berant, “Diagonal State Spaces are as Effective as
+                            Structured State Spaces” arXiv:2203.14343v3 [cs.LG] 18 May 2022
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Ankit Gupta, Karan Goel, and Christopher Ré, “On the Parameterization and
+                            Initialization of Diagonal State Space Models” arXiv:2206.11893v2 [cs.LG]
+                        </li>
+                    </ol>
+
+                    <div style="display: flex; justify-content: center; margin-top: 2em;">
+                        <a href="../index.html#blog_link"
+                            style="text-decoration: none; color: inherit; font-size: 1.2rem;">
+                            <i class="fas fa-arrow-left" style="margin-right: 6px;"></i>Back
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+                        viewBox="0 0 24 24">
+                        <title>Product</title>
+                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+                    </svg>
+                    <small class="d-block mb-3 text-body-secondary">&copy; 2017–2025</small>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script defer src="../template/assets/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
+
+</body>
+
+</html>
