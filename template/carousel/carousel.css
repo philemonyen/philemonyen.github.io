@@ -125,6 +125,11 @@ a:hover {
 
 .blog-content {
   text-indent: 2em;
+  font-size: 1.1em;
+}
+
+.blog-content-no-indent {
+  font-size: 1.1em;
 }
 
 .blog-img {

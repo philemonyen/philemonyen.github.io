@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Ping Yen</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    <script src="../template/assets/js/color-modes.js"></script>
+
+    <link href="../template/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="../template/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="../template/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="../template/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="../template/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .bi {
+            width: 1em;
+            height: 1em;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+    <!-- Custom styles for this ../template -->
+    <link href="../template/carousel/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Ping Yen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#blog_link">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content-->
+    <main>
+
+        <div class="container marketing">
+
+            <center>
+                <h1>Structured State Space Model</h1>
+            </center>
+
+            <hr class="divider" id="about_link">
+
+            <div class="row featurette">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                    <p class=" blog-content">
+                        In the last article, I introduced the integration between state space theory and sequence
+                        modeling and the naive computational instantiation - linear state space layer (LSSL). By the
+                        end, I mentioned the strong direct relationship between model performance and the proper choice
+                        of state matrix, as well as the incapability to learn a proper state matrix. In this article, I
+                        will focus on the enhancement of LSSL - Structure State Space Model (S4), discussing how S4
+                        overcome the challenge of setting and learning optimal state matrix with HiPPO, and finish with
+                        analyzing its complexity and performance.
+                    <h3>Structured State Matrix - HiPPO</h3>
+                    <p class=" blog-content">
+                        In this section, we will learn about the HiPPO state matrix, the core feature which enables S4
+                        to achieve state-of-the-art performance in various sequence modeling tasks. We start with the
+                        motivation for modeling memory with online function approximation, then move on to three
+                        variations of HiPPO matrices.
+                    </p>
+                    <h4>Motivation</h4>
+                    <p class=" blog-content">
+                        Recalling the concepts of state space model (SSM) from the previous article, we know that the
+                        system can only access to histories through the information encapsulated in the current state,
+                        so it is necessary for the state vectors to contain information about the cumulative history.
+                        However, it is impossible to memorize the entire history at any time point, so memories has to
+                        be compressed. As a result, the mission of handling long-term dependency transform into the
+                        search of the appropriate memory compression mechanism.</p>
+                    <h4>Problem Setup</h4>
+                    <p class=" blog-content">
+                        Gu et.al[2] approached the task of obtaining optimal state matrix by solving it with online
+                        function approximation with projection. The problem is formally defined as:
+                    </p>
+                    <img src="s4-problem-setup.png" class="blog-img" />
+                    <p class=" blog-content-no-indent">
+                        In other words, we aim to approximate the history function by projecting it onto a function
+                        subspace determined by a probability measure, and leverage the projection as memory
+                        representation.
+                    </p>
+                    <p class="blog-content">
+                        Let’s talk more about the two main components of this problem setup - probability measure and
+                        projection function subspace.
+                    </p>
+                    <p class="blog-content-no-indent">The time-varying probability measure plays an important role of
+                        controlling
+                        the importance of
+                        various parts of the input at every time point. This behavior allows the solutions to
+                        dynamically capture the time-dependent features and accurately approximate them.</p>
+                    <p class="blog-content-no-indent">After selecting a probability measure, we can naturally obtain the
+                        function space equipped by the measure.</p>
+                    <img src="prob-measure.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Any N-dimensional subspace G of this function space is a suitable
+                        candidate
+                        for approximation,
+                        where N corresponds to the order, or size, of the approximation. The projected history can be
+                        represented by the N coefficients of its expansion in any basis of G. Naturally, we select the
+                        set of orthogonal polynomials for the measure and obtain an orthogonal basis, and consequently
+                        the coefficients of the optimal basis expansion are simply</p>
+                    <img src="function-subspace.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Lastly, the coefficients should evolve as an ODE with dynamics
+                        determined by the history
+                        function, which we will later find it perfectly match with the state update equation of state
+                        space models (SSM).
+                    </p>
+
+                    <h4>HiPPO</h4>
+                    <img src="hippo.png" class="blog-img" />
+                    <p class="blog-content">The approximation problem will be solved by utilizing HiPPO, standing for
+                        High-Order Polynomial Projection Operator. HiPPO produces operators that project arbitrary
+                        functions onto the space of orthogonal polynomials with respect to a given probability measure.
+                        Additionally, HiPPO can produce an optimal solution to a natural online function approximation
+                        problem. We will first learn about the general framework, and then move on to discretization and
+                        its connection with SSM.</p>
+
+                    <h4>General Framework</h4>
+                    <p class=" blog-content">
+                        Given a probability measure family supported on the range between negative infinity and t, an
+                        N-dimensional subspace G of polynomials, and a continuous history function f, HiPPO defines a
+                        projection operator and a coefficient extraction operator at every time t, and the composition
+                        operator is called hippo.
+                    </p>
+                    <img src="hippo-framework.png" class="blog-img" />
+                    <p class="blog-content-no-indent">The projection operator first takes in a function restricted up to
+                        time t and maps to a polynomial g in the subspace G such that minimizes the approximation error.
+                        The coefficient extraction operator then maps the polynomial g to the coefficients of the basis
+                        of orthogonal polynomials defined with respect to the measure. Mentioned in the previous
+                        section, the coefficient function has the form of an ODE satisfying</p>
+                    <img src="hippo-ode.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Hence, the solution to the desired coefficient vectors is an ODE
+                        with closed-form transition matrices A and B.</p>
+                    <p class="blog-content-no-indent">We can surprisingly discover that the coefficient ODE is has the
+                        exact same form as the state update equation of SSM. The coefficient vectors model the memory at
+                        any time point, which is equivalent to the states. The continuous function f brings information
+                        about a specific time point to the system, which is equivalent to the inputs of SSM.
+                        Consequently, we can obtain that the matrix A is the state transition matrix and matrix B is the
+                        input matrix. As a result, solving this coefficient ODE is equivalent of acquiring the SSM we
+                        are looking for.</p>
+                    <h4>Discretization</h4>
+                    <p class="blog-content">Now we know that handling long-term memory with online function
+                        approximation with a resolution of HiPPO perfectly fits our goal of long sequence modeling with
+                        SSMs. For the next step, discretization is required to transform the continuous framework into
+                        computational implementation. The process is summarized as the following steps.
+                    </p>
+                    <img src="discretization-procedure.png" class="blog-img" />
+                    <p class="blog-content-no-indent">The process is sensitive to the discretization step size. Small
+                        step sizes enable the process to focus on fine-grain details of the input, while large step
+                        sizes provide a relatively macroscopic view. One benefit of discretization is the improvement in
+                        flexibility of handling irregularly-sampled or missing data. Choosing the appropriate step size
+                        not only allow the us to capture information at the right scale but also reduce the effects of
+                        data deficits.</p>
+
+                    <h4>Choice of Probability Measure</h4>
+                    <p class=" blog-content">There are two components of HiPPO that require manual definitions, which
+                        are the choice of probability measure family and the dimension of projection function subspace.
+                        The dimension of projection function subspace determines the complexity and depth of how memory
+                        is compressed, and the probability measure controls how the system handles the importance of
+                        various part of the memory. In this section, I will talk about the three different variations of
+                        HiPPO that use different measure to model history, and discuss the pros and cons according to
+                        their performances.</p>
+                    <h5>Variation I - HiPPO-LegT</h5>
+                    <img src="hippo-legt-mu.png" class="blog-img" />
+                    <p class=" blog-content">The first variation is called Translated Legendre (LegT). This measure
+                        assigns uniform weight to the most recent history, where the hyperparameter theta represents the
+                        length of the history being summarized. After applying this measure to the coefficient ODE, we
+                        obtain the closed form of matrices A and B as</p>
+                    <img src="hippo-legt.png" class="blog-img" />
+
+                    <h5>Variation II - HiPPO-LagT</h5>
+                    <p class=" blog-content">The second variation is called Translated Laguerre (LagT). This measure
+                        uses a exponentially decaying measure to assign more importance to recent history.</p>
+                    <img src="hippo-lagt-mu.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Apply this measure to the coefficient ODE, we will obtain the
+                        matrix closed forms as</p>
+                    <img src="hippo-lagt.png" class="blog-img" />
+
+                    <h5>Variation III - HiPPO-LegS</h5>
+                    <p class=" blog-content">One major behavior we can observe from the previous two measures is that
+                        they are both “sliding window” measures, which means that both can effectively handle only a
+                        specific range of the most recent history. HiPPO-LegT can only handle history within the range
+                        determined by hyperparameter $\theta$, while HiPPO-LagT gradually loss track of long-term
+                        history as the weights decay by time. In order to enhance HiPPO with timescale robustness, the
+                        author [2] proposed the Scaled Legendre (LegS) variation of HiPPO.</p>
+                    <p class="blog-content-no-indent">Similar to HiPPO-LegT, HiPPO-LegS assigns uniform weight to the
+                        history, but HiPPO-LegS takes all history into consideration.</p>
+                    <img src="hippo-legs-mu.png" class="blog-img" />
+                    <p class="blog-content-no-indent">In order to avoid forgetting memory, the sliding window is scaled
+                        over time and hence the = coefficient ODE will be rewrote as</p>
+                    <img src="hippo-legs-ode.png" class="blog-img" />
+                    <p class="blog-content-no-indent">After discretizing the ODE and solving the for the matrix closed
+                        forms, we will obtain the following result.</p>
+                    <img src="hippo-legs.png" class="blog-img" />
+                    <p class="blog-content-no-indent">There are three properties about HiPPO-LegS that will help
+                        boosting the performance. First,
+                        HiPPO-Legs is timescale-equivariant, which means its performance is independent of input
+                        timescale. By comparing the discretized coefficient update routines of general HiPPO and
+                        HiPPO-LegS, we can discover that one of HiPPO-LegS eliminates the timescale hyperparameter. As a
+                        result, not matter how the input is sampled or dilated, the approximation result will not be
+                        affected. Second, HiPPO-LegS enables fast recurrence computation. Under any GBT discretization,
+                        each recurrence step can be computed in O(N) operations. Lastly, HiPPO-LegS has bounded
+                        gradients and approximation error, which is very crucial to the numerical stability of the the
+                        model training process.</p>
+                    <p class="blog-content">In this section, we went through the entire process of investigating HiPPO
+                        and concluded at HiPPO-LegS, the extension of HiPPO that possesses ideal properties of handling
+                        long-term memories. Further researches were done to investigate better training methods and
+                        variations of the HiPPO state matrix, but these contents are not included since my understanding
+                        cannot afford a concrete elaboration. If you are interested, please refer to [5].</p>
+
+                    <h3>Structured State Space Model</h3>
+                    <p class=" blog-content">Before we get started with S4, let’s quickly review the major drawbacks of
+                        LSSL. First, the proper choice of state matrix and discretization timescale is crucial to the
+                        performance, but LSSL does not possess the capability to learn the optimal one. Second, naive
+                        LSSL performs repeating matrix multiplication on the state matrix when computing the convolution
+                        kernel, requiring expensive O(N^2L) time complexity and O(NL) space complexity. By incorporating
+                        a HiPPO-structured state matrix with proper parameterization, S4 resolves these two issues and
+                        present state-of-the-art performance in long-range dependency (LRD) tasks.
+                    </p>
+                    <h4>HiPPO-Structured State Matrix</h4>
+                    <p clas="blog-content">S4 leveraged the HiPPO-LegS structure to enhance the model’s capability of
+                        addressing LRD. The
+                        matrix is structured as</p>
+                    <img src="hippo-matrix.png" class="blog-img" />
+
+                    <h4>Parameterization - Normal Plus Low-Rank</h4>
+                    <p class=" blog-content">With the memory handling issue solved with the property of HiPPO matrices,
+                        the computational complexity issue is solved with the normal plus low-rank (NPLR)
+                        parameterization. NPLR parameterization literally decompose HiPPO matrices into the sum of a
+                        low-rank and normal matrices, obtaining the following representation:
+                    </p>
+                    <img src="nplr-eq.png" class="blog-img" />
+                    <p class=" blog-content-no-indent">S4 further leveraged the following routine to optimize
+                        computation efficiency for convolution kernel</p>
+                    <img src="nplr-algorithm.png" class="blog-img" />
+                    <p class="blog-content-no-indent">[1] provides a brief explanation for the routine above, but the
+                        content seriously surpass my
+                        ability to fully understand it. Hence, please refer to [1] if you are curious about the details
+                        of this algorithm.</p>
+                    <h4>Computational Complexity</h4>
+                    <p class=" blog-content">After exploiting the parameterization and optimized computation introduced
+                        above, S4 significantly reduce the effort required during training and inference.</p>
+                    <img src="complexity.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Comparing to previous classic sequence modeling models such as
+                        CNN, RNN, Attention-based models, and LSSL, S4 displays an overall complexity reduction during
+                        every stage of model training and evaluation. The graph below further demonstrates the
+                        efficiency of S4 by comparing with the most efficient Transformer-based models, Performer and
+                        Linear Transformer. We can observe that S4 is just a bit slower and bigger than the fastest and
+                        smallest model, hence can be considered as a very efficient model.</p>
+                    <img src="compexity-compare.png" class="blog-img" />
+                    <h4>Performance</h4>
+                    <p class=" blog-content">Lastly, let’s look at the performance of S4. The major highlight of S4 is
+                        that it outperforms various prior works in LRD tasks. Unlike prior models can only guess
+                        randomly when handling memory beyond their capability thresholds, the integration of HiPPO
+                        successfully resolves memory and computational bottlenecks. Additionally, S4 presents an
+                        expected feature of a power LRD model. S4 is able to extract more information from the raw data
+                        and outperform hand-crafted pre-processing. For instance, S4 achieves an astonishing 98.3%
+                        accuracy in raw speech classification, higher than all baselines that use the 100x shorter MFCC
+                        features.
+                    </p>
+
+                    <p class=" blog-content-no-indent">In conclusion, S4 strengthens LSSL with the structured HiPPO
+                        state matrix, achieving state-of-the-art performance in LRD tasks while presenting a
+                        significantly efficient computation complexity. These properties makes S4 the top candidate to
+                        apply in the field of sequence modeling, and was further extended to create the revolutionary
+                        model - Mamba. Meanwhile, S4 serves as a good start for future studies in related fields,
+                        providing researchers with a firm foundation to initiate their discoveries and investigation.
+                    </p>
+
+                    <h3>Citation</h3>
+                    <ol>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Karan Goel, and Christopher Ré, “Efficiently Modeling Long Sequences with
+                            Structure State Spaces” arXiv:2111.00396v3 [cs.LG] 5 Aug 2022
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Tri Dao, Stefano Ermon, Atri Rudra, and Christopher Ré, “HiPPO: Recurrent Memory
+                            with Optimal Polynomial Projections” arXiv:2008.07669v2 [cs.LG] 23 Oct 2020
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Isys Johnson, Aman Timalsina, Atri Rudra, and Christopher Ré, “How to Train Your
+                            HiPPO: State Space Models with Generalized Orthogonal Basis Projections” arXiv:2206.12037v2
+                            [cs.LG] 5 Aug 2022
+                        </li>
+                        <li class="blog-content-no-indent">
+                            HiPPO: Recurrent Memory with Optimal Polynomial Projections
+                            <a href="https://hazyresearch.stanford.edu/blog/2020-12-05-hippo"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Hilbert Space Wikipedia
+                            <a href="https://en.wikipedia.org/wiki/Hilbert_space"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                        <li class="blog-content-no-indent">
+                            A Probability Measure Wikipedia
+                            <a href="https://en.wikipedia.org/wiki/Probability_measure"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Gated Recurrent Unit 
+                            <a href="https://en.wikipedia.org/wiki/Gated_recurrent_unit"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                    </ol>
+
+                    <div style="display: flex; justify-content: center; margin-top: 2em;">
+                        <a href="../index.html#blog_link"
+                            style="text-decoration: none; color: inherit; font-size: 1.2rem;">
+                            <i class="fas fa-arrow-left" style="margin-right: 6px;"></i>Back
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+                        viewBox="0 0 24 24">
+                        <title>Product</title>
+                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+                    </svg>
+                    <small class="d-block mb-3 text-body-secondary">&copy; 2017–2025</small>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script defer src="../template/assets/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
+
+</body>
+
+</html>

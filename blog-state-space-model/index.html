@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Ping Yen</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    <script src="../template/assets/js/color-modes.js"></script>
+
+    <link href="../template/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="../template/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../template/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="../template/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="../template/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="../template/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .bi {
+            width: 1em;
+            height: 1em;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+    <!-- Custom styles for this ../template -->
+    <link href="../template/carousel/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Ping Yen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#blog_link">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content-->
+    <main>
+
+        <div class="container marketing">
+
+            <center>
+                <h1>State Space Model</h1>
+            </center>
+
+            <hr class="divider" id="about_link">
+
+            <div class="row featurette">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                    <p class=" blog-content">
+                        In my previous article, I briefly went through the main features of Mamba, a revolutionary model
+                        that possesses the potential to challenge the dominance of Transformers in the field of long
+                        sequence modeling. To further understand what makes Mamba so powerful, I conducted further paper
+                        studies about the core component of Mamba - Structured State Space Model (abbreviated as S4). S4
+                        has strong computational versatility enabling efficient computations at different ML model
+                        development stages. Additionally, S4 is proven to have better long range dependency (LRD) memory
+                        than Transformers, making it a perfect candidate to model very long sequences.</p>
+                    <p class=" blog-content">
+                        S4 can be decomposed into 2 major components, Structure State Matrix and State Space Model,
+                        which consist of a good amount of information. Writing everything in one article will make it
+                        too lengthy and consequently downgrading readability. Therefore, I will be writing about state
+                        space model today, and focus on structured state matrix in the next article.</p>
+                    <p class="blog-content">
+                        The order in this article is as follows:</p>
+                    <ol>
+                        <li class="blog-content-no-indent">State Space Theory</li>
+                        <li class="blog-content-no-indent">Discretizing Continuous State Space Model</li>
+                        <li class="blog-content-no-indent">Linear State Space Layer</li>
+                        <li class="blog-content-no-indent">Limitation of LSSL</li>
+                    </ol>
+                    <h3>State Space Theory</h3>
+                    <p class=" blog-content">
+                        As S4 draws inspiration from the State Space Model in the context of Control Theory, it is
+                        necessary to pick up the fundamentals of state space model (abbreviated as SSM) for better
+                        understandings.
+                    </p>
+                    <h4>State</h4>
+                    <p class=" blog-content">
+                        Let’s start with the concept of states. States lie within a latent state space and summarize the
+                        effect of past inputs on future outputs. In other words, the future of each state only depends
+                        on the current state and future inputs since everything about the past is encapsulated in the
+                        current state. Therefore, we can view states as the memory of the system.</p>
+                    <h4>State Space Model</h4>
+                    <p class=" blog-content">
+                        With the concept of states in mind, we can move on to learn about SSM. SSM is a representation
+                        of the dynamics of an N-th order system as a first order differential equation in an N-vector.
+                        This is equivalent to converting the N-th order differential equation that governs the dynamics
+                        into N first-order differential equations. In other words, SSM can be viewed as a
+                        sequence-to-sequence map that maps input sequence u(t) to output sequence y(t).
+                    </p>
+                    <p class=" blog-content">
+                        The general continuous-time linear state space system formula is defined as
+                    </p>
+                    <img src="state-space-eq.png" class="blog-img" />
+                    <p class="blog-content-no-indent">
+                        where y, x, u, A, B, C, D, t are output vector, state vector, input vector, state dynamic
+                        matrix, input matrix, output matrix, feedthrough matrix, and time, respectfully. Typically, we
+                        deal with Linear Time-Invariant (LTI) state dynamics where A,B,C,D are independent of t, so we
+                        can leverage the properties of linearity and time invariance for simpler analysis.
+                    </p>
+
+                    <h4>Creating State Space Models from Nonlinear Systems</h4>
+                    <p class=" blog-content">
+                        In order to apply state space theory to general nonlinear systems, we create SSMs about the
+                        equilibrium points of the nonlinear system.
+                    </p>
+                    <p class=" blog-content">Consider a nonlinear set of dynamics given by </p>
+                    <img src="nonlinear-dynamic.png" class="blog-img" />
+                    <p class="blog-content-no-indent">The equilibrium points can be obtained through setting the derivatives of x and u to
+                        0. Then,
+                        express the state and input equations as</p>
+                    <img src="equilibrium-eq.png" class="blog-img" />
+                    <p class="blog-content-no-indent">By rewriting the derivative of x with the Taylor series expansion of the equation of
+                        Figure 2
+                        about the equilibrium points, and we got</p>
+                    <img src="taylor-series.png" class="blog-img" />
+                    <p class="blog-content-no-indent">where subscript i stands for the i-th element of the vector.</p>
+                    <p class=" blog-content">Since the expansion is done about the equilibrium points, the function
+                        f in Figure 4 evaluates to 0. Consequently, by combining all state equations for all i, we can
+                        obtain</p>
+                    <img src="state-update-eq-xu.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Similarly, by applying the same transformation technique on y and u we can obtain
+                    </p>
+                    <img src="state-update-eq-yu.png" class="blog-img" />
+                    <p class="blog-content-no-indent">By dropping the delta symbol, we can obtain the identical SSM formula in Figure 1,
+                        showing that
+                        we are able to create SSMs from any nonlinear system. Keep in mind that the resulting SSM is not
+                        guaranteed to be LTI. If the system was operating around just one set of points, then all the
+                        partial fractions in matrices A,B,C,D are constants, and hence the system is an LTI SSM.</p>
+
+                    <h3>Discretizing Continuous State Space Model</h3>
+                    <p class=" blog-content">Since computers only operate on discrete numbers, it is crucial to
+                        select the proper
+                        discretization scheme to transform linear ODEs into discrete update approximation. Among several
+                        discretization techniques, I will talk about the two approaches that are employed in related
+                        studies - Generalized Bilinear Transformation (GBT) and Zero-Order Hold (ZOH).</p>
+                    <h4>Generalized Bilinear Transformation</h4>
+                    <p class=" blog-content">Consider a time step size (or timescale), the discretized state update
+                        is expressed as</p>
+                    <img src="ode-discretization.png" class="blog-img" />
+                    <p class="blog-content-no-indent">By setting alpha to 1/2, we obtain the GBT update formula which preserves the
+                        stability of the
+                        system. By organizing the coefficients of x(t) and u(t) into coefficient matrices, we can obtain
+                        the discrete SSM formula</p>
+                    <img src="discrete-ssm.png" class="blog-img" />
+                    <h4>Zero-Order Hold</h4>
+                    <p class=" blog-content">Zero-order hold (ZOH) assumes the value of a sample of the input is
+                        held constant for a duration
+                        of one sample time interval. Consider this assumption, the SSM formula can be discretized as:
+                    </p>
+                    <img src="zoh-discretization.png" class="blog-img" />
+                    <p>In the next section, GBT discretization is applied to obtain the discrete SSM. </p>
+
+                    <h3>Linear State Space Layer</h3>
+                    <p class=" blog-content">After learning about SSM and discretization, we have acquired the
+                        foundation of discrete linear
+                        SSM. Gu et al.[1] further introduced a model family called “Linear State Space Layer”
+                        (abbreviated as LSSL) to formally define the system. The major feature of LSSL is its ability to
+                        simultaneously deliver strengths of RNNs, CNNs, and NDEs. Moreover, LSSL is capable to maintain
+                        the equivalent expressivity as corresponding recurrent, convolution, or continuous-time models.
+                    </p>
+                    <h4>Recurrence View</h4>
+                    <p class=" blog-content">Recalling the discrete state update equation in Figure 8, we can easily
+                        observe that it is a
+                        classic recurrence equation where the recurrent state that carries the context of all inputs
+                        before specific time point; hence, LSSL can be viewed as a recurrent model with efficient and
+                        stateful inference that requires fixed computation and storage per time step.</p>
+                    <p class=" blog-content">In [1], the authors showed two lemmas proving that LSSLs are as
+                        expressive as RNNs. First, the ubiquitous gating mechanism is actually an analog of the state
+                        size or timescale. Secondly, deep stacked LSSL layers of order N=1 with position-wise
+                        nonlinear-functions can approximate any non-linear ODE. As a result, LSSL do not loose modeling
+                        power by approximating any nonlinear ODE with discrete linear recurrences.</p>
+                    <h4>Convolution View</h4>
+                    <p class=" blog-content">LSSL can also be viewed as a convolution model. Let initial state
+                        equals 0 for simplicity, then
+                        the discrete SSM equations in Figure 8 yields</p>
+                    <img src="output-expanded.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Then y is simply the non-circular convolution</p>
+                    <img src="convolution-expression.png" class="blog-img" />
+                    <p class="blog-content-no-indent">Thus, the entire output of LSSL can be computed with one convolution which can be
+                        efficiently
+                        implemented with 3 FFTs.</p>
+                    <p class=" blog-content">LSSL is also expressive enough to represent convolutions. It is a
+                        well-known fact that the output of linear state space systems is related to the input by a
+                        convolution with the impulse response of the system. Conversely, a convolutional filter that is
+                        a rational function of degree N can be represented by a state-space model of size N.
+                        Consequently, any arbitrary convolutional filter can be approximated by a rational function and
+                        represented by an LSSL.</p>
+                    <h4>Continuous-Time View</h4>
+                    <p class=" blog-content">Recalling that LSSL is derived from a linear ODE system, so LSSL itself
+                        is still a differential
+                        equation. As such, LSSL can perform unique applications of continuous-time models including
+                        simulating continuous processes, handling missing data, and adapting to different timescales.
+                    </p>
+
+                    <h3>Limitation of Naïve LSSL</h3>
+                    <p class=" blog-content">The generality of LSSL combines the advantages of CNNs, RNNs, and NDEs,
+                        providing an advanced
+                        approach to work on sequence modeling tasks. However, such generality comes with tradeoffs.
+                        Naïve LSSL Inherit the limitations of both RNNs and CNNs at remembering long dependencies.
+                        Additionally, choosing the appropriate state matrix and timescale is critical to performance,
+                        but they are computationally infeasible to learn. As a result, further study on state matrix is
+                        required to enhance LSSL performance</p>
+
+                    <h3>Citation</h3>
+                    <ol>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Isys Johnson, Karan Goel, Khaled Saab, Tri Dao, Atri Rudra, and Christopher Ré,
+                            “Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space
+                            Layers”
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Karan Goel, and Christopher Ré, “Efficiently Modeling Long Sequences with
+                            Structure State Spaces” arXiv:2111.00396v3 [cs.LG] 5 Aug 2022
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Structure State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models
+                            <a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3"><i class="fas fa-arrow-up-right-from-square"></i></a>
+
+                        </li>
+                        <li class="blog-content-no-indent">
+                            HiPPO: Recurrent Memory with Optimal Polynomial Projections
+                            <a href="https://hazyresearch.stanford.edu/blog/2020-12-05-hippo"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Tri Dao, Stefano Ermon, Atri Rudra, and Christopher Ré, “HiPPO: Recurrent Memory
+                            with Optimal Polynomial Projections” arXiv:2008.07669v2 [cs.LG] 23 Oct 2020
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Ankit Gupta, Albert Gu, Jonathan Berant, “Diagonal State Spaces are as Effective as
+                            Structured State Spaces” arXiv:2203.14343v3 [cs.LG] 18 May 2022
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Ankit Gupta, Karan Goel, and Christopher Ré, “On the Parameterization and
+                            Initialization of Diagonal State Space Models” arXiv:2206.11893v2 [cs.LG]
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Albert Gu, Isys Johnson, Aman, Timalsina, Atri Rudra, and Christopher Ré, “How to Train Your
+                            HiPPO: State Space Models with Generalized Orthogonal Basis Projections” arXiv:2206.12037v2
+                            [cs.LG] 5 Aug 2022
+                        </li>
+                        <li class="blog-content-no-indent">
+                            Feedback Control Systems
+                            <a href="https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/1bfc976fcead1982d90c5057511e5ef7_MIT16_30F10_lec05.pdf"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                    </ol>
+
+                    <div style="display: flex; justify-content: center; margin-top: 2em;">
+                        <a href="../index.html#blog_link"
+                            style="text-decoration: none; color: inherit; font-size: 1.2rem;">
+                            <i class="fas fa-arrow-left" style="margin-right: 6px;"></i>Back
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+                        viewBox="0 0 24 24">
+                        <title>Product</title>
+                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+                    </svg>
+                    <small class="d-block mb-3 text-body-secondary">&copy; 2017–2025</small>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script defer src="../template/assets/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
+
+</body>
+
+</html>

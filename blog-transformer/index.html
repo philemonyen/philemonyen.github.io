@@ -21,7 +21,7 @@
     <link rel="manifest" href="../template/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="../template/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="../template/assets/img/favicons/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="theme-color" content="#712cf9">
 
 
@@ -152,7 +152,7 @@
                 <div class="col-md-2"></div>
 
                 <div class="col-md-8">
-                    <p class="lead blog-content">
+                    <p class="blog-content">
                         Transformer has become the most prevailing model in the field of sequence modeling
                         since publishing thanks to its capability to efficiently handle long-range dependencies (LRD).
                         By leveraging the attention mechanism, Transformer successfully addresses the main drawbacks of
@@ -161,7 +161,7 @@
                         Through this article, I aim to deliver a concise elaboration on the Transformer model, providing
                         a thorough understanding about how it achieve achieve effective sequence modeling.</p>
                     <h3>Limitations of CNN & RNN</h3>
-                    <p class="lead blog-content">
+                    <p class="blog-content">
                         Before Transformer, sequence modeling tasks are majorly tackled with CNNs and RNNs,
                         which both are straightforward choices with regard of their natures. The sliding kernels of CNNs
                         capture necessary information from the input data, and the recurrence of RNNs enables the reuse
@@ -172,21 +172,21 @@
                         dealing with long sequences. Meanwhile, RNN’s sequential nature precludes parallelization within
                         training samples, which becomes critical at longer sequence lengths as memory constraints limit
                         batching across samples.</p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         Nonetheless, we can still mark some necessary
                         characteristics for an effective sequence modeling
                         methodology. First, it must perform some form of feature extraction or encoding from the input
                         sequence. Second, It must keep track of the positions of the features to accurately capture the
                         relationship between features. Lastly, it must reuse its current output for future predictions
                         to keep track of the sequential dependencies, just like RNN.</p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         In the next sections, we will go through the key components of the Transformer and learn how
                         they deliver the required features respectively.
                     </p>
 
                     <h3>Attention</h3>
                     <img src="attention-structure.png" class="blog-img" />
-                    <p class=" lead blog-content">
+                    <p class=" blog-content">
                         Transformer leverages the attention mechanism to perform a new approach of feature extraction
                         from the input sequence. Attention allows an element to “attend” to different parts of the
                         sequence and dynamically determine the weights or importance/attention scores. Better than RNN
@@ -195,17 +195,17 @@
                         behaves. As this concept is similar to CNN, Cordonnier et al. [5] conducted a study showing an
                         equivalent relationship between self-attention and convolution.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         Attentions can be computed within the same sequence or between different sequences. Attentions
                         computed within the same sequence, also known as self-attention, captures the dependencies of an
                         element on other parts of the sequence. With the similar idea, attentions computed across
                         different sequences models the connection between an element and the other sequence.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         Attention is computed with the following formula
                     </p>
                     <img src="attention-eq.png" class="blog-img" />
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         where Q, K, V stands for query, key, and value vectors, respectively. The query vector
                         represents the element that is attending the sequence. The key vector represents the importance
                         of each part of the sequence that is going to be attended with respect to the query vector.
@@ -215,12 +215,12 @@
                         vectors. All query, key, and value vectors are derived from the input vector through
                         corresponding projection matrices learned via training.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         To further utilize attention to model complex patterns, multi-head self-attention (MHSA) is
                         proposed to capture information from different abstraction levels.
                     </p>
                     <img src="multi-head.png" class="blog-img" />
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         Given h attention heads, the input sequence is projected to query, key, and value vectors h
                         times with h different learned linear projections of corresponding dimensionalities in parallel.
                         Then, concatenate the h attention outputs and project again to encode all essential
@@ -228,12 +228,12 @@
                     </p>
 
                     <h3>Positional Encoding</h3>
-                    <p class="lead blog-content">
+                    <p class="blog-content">
                         In order to incorporate positional information into attention computation, Vaswani et al.[1]
                         employed the absolute sinusoidal positional encoding to embed raw position in a latent space.
                     </p>
                     <img src="position-encoding.png" class="blog-img" />
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         In future studies, researchers implemented different encoding approaches such as learned
                         positional encoding and relative positional encoding. These topics will be discussed in the next
                         article talking about Efficient Transformers. In conclusion, by adding the positional encoding
@@ -243,11 +243,11 @@
 
                     <h3>Model Architecture</h3>
                     <img src="transformer-architecture.png" class="blog-img" />
-                    <p class="lead blog-content">
+                    <p class="blog-content">
                         Finally, with the concept of attention and positional encoding in mind, we are able to dive into
                         the data flow and architecture of the Transformer.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         The model consists of two major components: encoder and decoder. The encoder extracts
                         information from the input sequence with MHSA, and result in a series of encoder output states,
                         where each state represents a token in the input sequence. Then, at every timestep, the decoder
@@ -255,20 +255,20 @@
                         prediction. This data flow enables Transformer to present a recurrence manner and reuse its
                         current output for future prediction just like RNN.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         The encoder is in charge of learning the features, dependencies, and relationships within the
                         input sequence and encodes them into encoder states as output. The encoder can be decomposed
                         into a MHSA layer plus a position-wise fully-connected feedforward layer, with residual
                         connections around each layer following by layer normalization.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         The structure of the decoder is slightly different from the encoder as it contains two
                         multi-head attention layers. The masked MHSA layer learns features and relationships from the
                         current output sequence, and the mask ensures predictions for position i can depend only on the
                         known outputs at positions before i. The other multi-head attention layer takes in the output of
                         the masked MHSA layer and encoder output states one at a time to obtain prediction.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         In summary, Transformer successfully presents the three characteristics mentioned earlier about
                         a effective sequence model. Through the leveraging of attention mechanism and positional
                         encoding, Transformer is able to extract and model sequential features with the consideration of
@@ -278,7 +278,7 @@
                     </p>
 
                     <h3>Performance & Complexity</h3>
-                    <p class="lead blog-content">
+                    <p class="blog-content">
                         The graph above depicts the performance of several effective CNN- and RNN-based models as well
                         as the Transformer in a machine translation task. We can easily observe that Transformer
                         achieves the best performance while requiring the least training cost. This performance makes
@@ -286,13 +286,13 @@
                         outcomes in a short time.
                     </p>
                     <img src="result.png" class="blog-img" />
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         In this section, we will take a look at the performance of Transformer and discuss how
                         self-attention make Transformer more preferable on sequence modeling tasks from the complexity
                         aspect.
                     </p>
                     <img src="complexity.png" class="blog-img" />
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         The main difference between CNN, RNN, and Transformer is the strategies they use to handle
                         sequential features. The image above depicts the complexities of self-attention, convolution,
                         and recurrent layers during training and inferencing, where n, d, and k stands for sequence
@@ -303,7 +303,7 @@
                         cost. while separable convolution layer can reduce layer complexity, its optimal complexity is
                         still identical to self-attention layer.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         Another remarkable point about the table above is the maximum path length. The key factor
                         affecting the ability to learn LRD is the length of the paths forward and backward signals have
                         to traverse in the network. The shorter the path, the better the learning quality. Convolution
@@ -315,7 +315,7 @@
                         if we restrict self-attention to focus on a fixed-size neighborhood, the max path length scales
                         by only a constant.
                     </p>
-                    <p class="lead blog-content">
+                    <p class="blog-content-no-indent">
                         From both theoretical and empirical perspectives, we proved that Transformer is more powerful
                         while more cost-friendly. Transformer combines the advantages of CNNs and RNNs and set up a new
                         benchmark for sequence models. Several extensions of Transformer have been proposed to tackle
@@ -324,7 +324,7 @@
                     </p>
 
                     <h3>Conclusion</h3>
-                    <p class="lead blog-content">
+                    <p class="blog-content">
                         In this article, we went through the core of the Transformer, learning about the mechanics that
                         enable its dominance in the field of sequence modeling. Despite of the powerfulness, Transformer
                         comes with some drawbacks. The computational and memory complexity scale quadratically to the
@@ -337,26 +337,26 @@
 
                     <h3>Citation</h3>
                     <ol>
-                        <li class="lead">
+                        <li class="blog-content-no-indent">
                             Ashish Vaswani, , Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez,
                             Lukaz Kaiser, Illia Polosukhin, “Attention Is All You Need” arXiv: 1706.03762v7 [cs.CL] 2
                             Aug 2023
                         </li>
-                        <li class="lead">
+                        <li class="blog-content-no-indent">
                             Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, Lukasz Kaiser “Universal
                             Transformers” arXiv:1807.03819v3 [cs.CL] 5 Mar 2019
                         </li>
-                        <li class="lead">
+                        <li class="blog-content-no-indent">
                             Angelos Katharopoulos, Apoorv Vyas, Nikolaos Pappas, François Fleuret, “Transformers are
                             RNNs: Fast Autoregressive Transformers with Linear Attention”, arXiv:2006.16236v3 [cs.LG] 31
                             Aug 2020
                         </li>
-                        <li class="lead">
+                        <li class="blog-content-no-indent">
                             Yao-Hung Hubert Tsai, Shaojie Bai, Makoto Yamada, Louis-Philippe Morency Ruslan
                             Salakhutdinov “Transformer Dissection: A Unified Understanding of Transformer’s Attention
                             via the Lens of Kernel”
                         </li>
-                        <li class="lead">
+                        <li class="blog-content-no-indent">
                             Jean-Baptiste Cordonnier, Andreas Loukas, Martin Jaggi, “On the Relationship Between
                             Self-Atention and Convolutional Layers” arXiv:1911.03584v2 [cs.LG] 10 Jan 2020
                         </li>
