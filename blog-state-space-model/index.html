@@ -152,7 +152,7 @@
                 <div class="col-md-2"></div>
 
                 <div class="col-md-8">
-                    <p class=" blog-content">
+                    <p class="blog-content">
                         In my previous article, I briefly went through the main features of Mamba, a revolutionary model
                         that possesses the potential to challenge the dominance of Transformers in the field of long
                         sequence modeling. To further understand what makes Mamba so powerful, I conducted further paper
@@ -160,12 +160,12 @@
                         has strong computational versatility enabling efficient computations at different ML model
                         development stages. Additionally, S4 is proven to have better long range dependency (LRD) memory
                         than Transformers, making it a perfect candidate to model very long sequences.</p>
-                    <p class=" blog-content">
+                    <p class="blog-content-no-indent">
                         S4 can be decomposed into 2 major components, Structure State Matrix and State Space Model,
                         which consist of a good amount of information. Writing everything in one article will make it
                         too lengthy and consequently downgrading readability. Therefore, I will be writing about state
                         space model today, and focus on structured state matrix in the next article.</p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         The order in this article is as follows:</p>
                     <ol>
                         <li class="blog-content-no-indent">State Space Theory</li>
@@ -173,133 +173,204 @@
                         <li class="blog-content-no-indent">Linear State Space Layer</li>
                         <li class="blog-content-no-indent">Limitation of LSSL</li>
                     </ol>
-                    <h3>State Space Theory</h3>
-                    <p class=" blog-content">
+                    <h3 class="blog-title">State Space Theory</h3>
+                    <p class="blog-content">
                         As S4 draws inspiration from the State Space Model in the context of Control Theory, it is
                         necessary to pick up the fundamentals of state space model (abbreviated as SSM) for better
                         understandings.
                     </p>
-                    <h4>State</h4>
-                    <p class=" blog-content">
+                    <h4 class="blog-subtitle">State</h4>
+                    <p class="blog-subtitle-content">
                         Let’s start with the concept of states. States lie within a latent state space and summarize the
                         effect of past inputs on future outputs. In other words, the future of each state only depends
                         on the current state and future inputs since everything about the past is encapsulated in the
                         current state. Therefore, we can view states as the memory of the system.</p>
-                    <h4>State Space Model</h4>
-                    <p class=" blog-content">
+                    <h4 class="blog-subtitle">State Space Model</h4>
+                    <p class="blog-subtitle-content">
                         With the concept of states in mind, we can move on to learn about SSM. SSM is a representation
-                        of the dynamics of an N-th order system as a first order differential equation in an N-vector.
+                        of the dynamics of an <span class="blog-symbol">N</span>-th order system as a first order
+                        differential equation in an <span class="blog-symbol">N</span>-vector.
                         This is equivalent to converting the N-th order differential equation that governs the dynamics
-                        into N first-order differential equations. In other words, SSM can be viewed as a
-                        sequence-to-sequence map that maps input sequence u(t) to output sequence y(t).
+                        into <span class="blog-symbol">N</span> first-order differential equations. In other words, SSM
+                        can be viewed as a
+                        sequence-to-sequence map that maps input sequence <span class="blog-symbol">u(t)</span> to
+                        output sequence <span class="blog-symbol">y(t)</span>.
                     </p>
-                    <p class=" blog-content">
+                    <p class="blog-subtitle-content-no-indent">
                         The general continuous-time linear state space system formula is defined as
                     </p>
-                    <img src="state-space-eq.png" class="blog-img" />
-                    <p class="blog-content-no-indent">
-                        where y, x, u, A, B, C, D, t are output vector, state vector, input vector, state dynamic
+                    <figure class="blog-img">
+                        <img src="state-space-eq.png" style="width: 100%;" />
+                        <figcaption class="blog-caption">
+                            Figure 1. General continuous-time linear state space system formula
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">
+                        where <span class="blog-symbol">y, x, u, A, B, C, D, t</span> are output vector, state vector,
+                        input vector, state dynamic
                         matrix, input matrix, output matrix, feedthrough matrix, and time, respectfully. Typically, we
-                        deal with Linear Time-Invariant (LTI) state dynamics where A,B,C,D are independent of t, so we
+                        deal with Linear Time-Invariant (LTI) state dynamics where <span
+                            class="blog-symbol">A,B,C,D</span> are independent of <span class="blog-symbol">t</span>, so
+                        we
                         can leverage the properties of linearity and time invariance for simpler analysis.
                     </p>
 
-                    <h4>Creating State Space Models from Nonlinear Systems</h4>
-                    <p class=" blog-content">
+                    <h4 class="blog-subtitle">Creating State Space Models from Nonlinear Systems</h4>
+                    <p class="blog-subtitle-content">
                         In order to apply state space theory to general nonlinear systems, we create SSMs about the
                         equilibrium points of the nonlinear system.
                     </p>
-                    <p class=" blog-content">Consider a nonlinear set of dynamics given by </p>
-                    <img src="nonlinear-dynamic.png" class="blog-img" />
-                    <p class="blog-content-no-indent">The equilibrium points can be obtained through setting the derivatives of x and u to
-                        0. Then,
-                        express the state and input equations as</p>
-                    <img src="equilibrium-eq.png" class="blog-img" />
-                    <p class="blog-content-no-indent">By rewriting the derivative of x with the Taylor series expansion of the equation of
-                        Figure 2
-                        about the equilibrium points, and we got</p>
-                    <img src="taylor-series.png" class="blog-img" />
-                    <p class="blog-content-no-indent">where subscript i stands for the i-th element of the vector.</p>
-                    <p class=" blog-content">Since the expansion is done about the equilibrium points, the function
-                        f in Figure 4 evaluates to 0. Consequently, by combining all state equations for all i, we can
-                        obtain</p>
-                    <img src="state-update-eq-xu.png" class="blog-img" />
-                    <p class="blog-content-no-indent">Similarly, by applying the same transformation technique on y and u we can obtain
+                    <p class="blog-subtitle-content-no-indent">Consider a nonlinear set of dynamics given by </p>
+                    <figure class="blog-img">
+                        <img src="nonlinear-dynamic.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 2. Equation for a nonlinear set of dynamics
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">The equilibrium points can be obtained through setting
+                        the derivatives of <span class="blog-symbol">x</span> and <span class="blog-symbol">u</span> to
+                        0. Then, express the state and input equations as</p>
+                    <figure class="blog-img">
+                        <img src="equilibrium-eq.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 3. State and input equation about equilibrium points
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">By rewriting the derivative of <span
+                            class="blog-symbol">x</span> with the Taylor series
+                        expansion of the equation of Figure 2 about the equilibrium points, and we got</p>
+                    <figure class="blog-img">
+                        <img src="taylor-series.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 4. Taylor series expansion of derivative of x
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">where subscript <span class="blog-symbol">i</span> stands
+                        for the <span class="blog-symbol">i</span>-th element of the vector.</p>
+                    <p class="blog-subtitle-content-no-indent">Since the expansion is done about the equilibrium points,
+                        the function <span class="blog-symbol">f</span> in Figure 4 evaluates to 0. Consequently, by
+                        combining all state equations for all <span class="blog-symbol">i</span>, we can obtain</p>
+                    <figure class="blog-img">
+                        <img src="state-update-eq-xu.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 5. State update formula obtained from the Taylor expansion around equilibrium points
+                            of x and u
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">Similarly, by applying the same transformation technique
+                        on <span class="blog-symbol">y</span> and <span class="blog-symbol">u</span> we can obtain
                     </p>
-                    <img src="state-update-eq-yu.png" class="blog-img" />
-                    <p class="blog-content-no-indent">By dropping the delta symbol, we can obtain the identical SSM formula in Figure 1,
-                        showing that
-                        we are able to create SSMs from any nonlinear system. Keep in mind that the resulting SSM is not
-                        guaranteed to be LTI. If the system was operating around just one set of points, then all the
-                        partial fractions in matrices A,B,C,D are constants, and hence the system is an LTI SSM.</p>
+                    <figure class="blog-img">
+                        <img src="state-update-eq-yu.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 6. State output formula obtained from the Taylor expansion around equilibrium points
+                            of y and u
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">By dropping the delta symbol, we can obtain the identical
+                        SSM formula in Figure 1, showing that we are able to create SSMs from any nonlinear system. Keep
+                        in mind that the resulting SSM is not guaranteed to be LTI. If the system was operating around
+                        just one set of points, then all the partial fractions in matrices <span
+                            class="blog-symbol">A,B,C,D</span> are constants, and
+                        hence the system is an LTI SSM.</p>
 
-                    <h3>Discretizing Continuous State Space Model</h3>
-                    <p class=" blog-content">Since computers only operate on discrete numbers, it is crucial to
-                        select the proper
-                        discretization scheme to transform linear ODEs into discrete update approximation. Among several
+                    <h3 class="blog-title">Discretizing Continuous State Space Model</h3>
+                    <p class="blog-content">Since computers only operate on discrete numbers, it is crucial to
+                        select the proper discretization scheme to transform linear ODEs into discrete update
+                        approximation. Among several
                         discretization techniques, I will talk about the two approaches that are employed in related
                         studies - Generalized Bilinear Transformation (GBT) and Zero-Order Hold (ZOH).</p>
-                    <h4>Generalized Bilinear Transformation</h4>
-                    <p class=" blog-content">Consider a time step size (or timescale), the discretized state update
-                        is expressed as</p>
-                    <img src="ode-discretization.png" class="blog-img" />
-                    <p class="blog-content-no-indent">By setting alpha to 1/2, we obtain the GBT update formula which preserves the
-                        stability of the
-                        system. By organizing the coefficients of x(t) and u(t) into coefficient matrices, we can obtain
-                        the discrete SSM formula</p>
-                    <img src="discrete-ssm.png" class="blog-img" />
-                    <h4>Zero-Order Hold</h4>
-                    <p class=" blog-content">Zero-order hold (ZOH) assumes the value of a sample of the input is
-                        held constant for a duration
-                        of one sample time interval. Consider this assumption, the SSM formula can be discretized as:
+                    <h4 class="blog-subtitle">Generalized Bilinear Transformation</h4>
+                    <p class="blog-subtitle-content">Consider a time step size (or timescale), the discretized state
+                        update is expressed as</p>
+                    <figure class="blog-img">
+                        <img src="ode-discretization.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 7. Discretization of the ODE in Figure 1 with constant A and B with respect to a
+                            timescale
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">By setting alpha to 1/2, we obtain the GBT update formula
+                        which preserves the stability of the system. By organizing the coefficients of <span
+                            class="blog-symbol">x(t)</span> and <span class="blog-symbol">u(t)</span> into coefficient
+                        matrices, we can obtain the discrete SSM formula</p>
+                    <figure class="blog-img">
+                        <img src="discrete-ssm.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 8. Rewriting and simplifying formula ins Figure 7 to obtain discrete SSM formula
+                        </figcaption>
+                    </figure>
+                    <h4 class="blog-subtitle">Zero-Order Hold</h4>
+                    <p class="blog-subtitle-content">Zero-order hold (ZOH) assumes the value of a sample of the input is
+                        held constant for a duration of one sample time interval. Consider this assumption, the SSM
+                        formula can be discretized as:
                     </p>
-                    <img src="zoh-discretization.png" class="blog-img" />
-                    <p>In the next section, GBT discretization is applied to obtain the discrete SSM. </p>
+                    <figure class="blog-img">
+                        <img src="zoh-discretization.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 9. ZOH discretization formula
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">In the next section, GBT discretization is applied to
+                        obtain the discrete SSM. </p>
 
-                    <h3>Linear State Space Layer</h3>
-                    <p class=" blog-content">After learning about SSM and discretization, we have acquired the
+                    <h3 class="blog-title">Linear State Space Layer</h3>
+                    <p class="blog-content">After learning about SSM and discretization, we have acquired the
                         foundation of discrete linear
                         SSM. Gu et al.[1] further introduced a model family called “Linear State Space Layer”
                         (abbreviated as LSSL) to formally define the system. The major feature of LSSL is its ability to
                         simultaneously deliver strengths of RNNs, CNNs, and NDEs. Moreover, LSSL is capable to maintain
                         the equivalent expressivity as corresponding recurrent, convolution, or continuous-time models.
                     </p>
-                    <h4>Recurrence View</h4>
-                    <p class=" blog-content">Recalling the discrete state update equation in Figure 8, we can easily
-                        observe that it is a
+                    <h4 class="blog-subtitle">Recurrence View</h4>
+                    <p class="blog-subtitle-content">Recalling the discrete state update equation in Figure 8, we can
+                        easily observe that it is a
                         classic recurrence equation where the recurrent state that carries the context of all inputs
                         before specific time point; hence, LSSL can be viewed as a recurrent model with efficient and
                         stateful inference that requires fixed computation and storage per time step.</p>
-                    <p class=" blog-content">In [1], the authors showed two lemmas proving that LSSLs are as
-                        expressive as RNNs. First, the ubiquitous gating mechanism is actually an analog of the state
-                        size or timescale. Secondly, deep stacked LSSL layers of order N=1 with position-wise
+                    <p class="blog-subtitle-content-no-indent">In [1], the authors showed two lemmas proving that LSSLs
+                        are as expressive as RNNs. First, the ubiquitous gating mechanism is actually an analog of the
+                        state
+                        size or timescale. Secondly, deep stacked LSSL layers of order <span
+                            class="blog-symbol">N=1</span> with position-wise
                         nonlinear-functions can approximate any non-linear ODE. As a result, LSSL do not loose modeling
                         power by approximating any nonlinear ODE with discrete linear recurrences.</p>
-                    <h4>Convolution View</h4>
-                    <p class=" blog-content">LSSL can also be viewed as a convolution model. Let initial state
-                        equals 0 for simplicity, then
-                        the discrete SSM equations in Figure 8 yields</p>
-                    <img src="output-expanded.png" class="blog-img" />
-                    <p class="blog-content-no-indent">Then y is simply the non-circular convolution</p>
-                    <img src="convolution-expression.png" class="blog-img" />
-                    <p class="blog-content-no-indent">Thus, the entire output of LSSL can be computed with one convolution which can be
-                        efficiently
-                        implemented with 3 FFTs.</p>
-                    <p class=" blog-content">LSSL is also expressive enough to represent convolutions. It is a
+                    <h4 class="blog-subtitle">Convolution View</h4>
+                    <p class="blog-subtitle-content">LSSL can also be viewed as a convolution model. Let initial state
+                        equals 0 for simplicity, then the discrete SSM equations in Figure 8 yields</p>
+                    <figure class="blog-img">
+                        <img src="output-expanded.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 10. Expanded representation of state output with initial state of 0
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">Then y is simply the non-circular convolution</p>
+                    <figure class="blog-img">
+                        <img src="convolution-expression.png" class="blog-img" />
+                        <figcaption class="blog-caption">
+                            Figure 11. Convolutional expression of the equation in Figure 10
+                        </figcaption>
+                    </figure>
+                    <p class="blog-subtitle-content-no-indent">Thus, the entire output of LSSL can be computed with one
+                        convolution which can be
+                        efficiently implemented with 3 FFTs.</p>
+                    <p class="blog-subtitle-content-no-indent">LSSL is also expressive enough to represent convolutions.
+                        It is a
                         well-known fact that the output of linear state space systems is related to the input by a
                         convolution with the impulse response of the system. Conversely, a convolutional filter that is
-                        a rational function of degree N can be represented by a state-space model of size N.
+                        a rational function of degree N can be represented by a state-space model of size <span
+                            class="blog-symbol">N</span>.
                         Consequently, any arbitrary convolutional filter can be approximated by a rational function and
                         represented by an LSSL.</p>
-                    <h4>Continuous-Time View</h4>
-                    <p class=" blog-content">Recalling that LSSL is derived from a linear ODE system, so LSSL itself
-                        is still a differential
-                        equation. As such, LSSL can perform unique applications of continuous-time models including
-                        simulating continuous processes, handling missing data, and adapting to different timescales.
+                    <h4 class="blog-subtitle">Continuous-Time View</h4>
+                    <p class="blog-subtitle-content">Recalling that LSSL is derived from a linear ODE system, so LSSL
+                        itself is still a differential equation. As such, LSSL can perform unique applications of
+                        continuous-time models including simulating continuous processes, handling missing data, and
+                        adapting to different timescales.
                     </p>
 
-                    <h3>Limitation of Naïve LSSL</h3>
-                    <p class=" blog-content">The generality of LSSL combines the advantages of CNNs, RNNs, and NDEs,
+                    <h3 class="blog-title">Limitation of Naïve LSSL</h3>
+                    <p class="blog-content">The generality of LSSL combines the advantages of CNNs, RNNs, and NDEs,
                         providing an advanced
                         approach to work on sequence modeling tasks. However, such generality comes with tradeoffs.
                         Naïve LSSL Inherit the limitations of both RNNs and CNNs at remembering long dependencies.
@@ -307,7 +378,7 @@
                         but they are computationally infeasible to learn. As a result, further study on state matrix is
                         required to enhance LSSL performance</p>
 
-                    <h3>Citation</h3>
+                    <h3 class="blog-title">Citation</h3>
                     <ol>
                         <li class="blog-content-no-indent">
                             Albert Gu, Isys Johnson, Karan Goel, Khaled Saab, Tri Dao, Atri Rudra, and Christopher Ré,
@@ -320,12 +391,14 @@
                         </li>
                         <li class="blog-content-no-indent">
                             Structure State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models
-                            <a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3"><i
+                                    class="fas fa-arrow-up-right-from-square"></i></a>
 
                         </li>
                         <li class="blog-content-no-indent">
                             HiPPO: Recurrent Memory with Optimal Polynomial Projections
-                            <a href="https://hazyresearch.stanford.edu/blog/2020-12-05-hippo"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://hazyresearch.stanford.edu/blog/2020-12-05-hippo"><i
+                                    class="fas fa-arrow-up-right-from-square"></i></a>
                         </li>
                         <li class="blog-content-no-indent">
                             Albert Gu, Tri Dao, Stefano Ermon, Atri Rudra, and Christopher Ré, “HiPPO: Recurrent Memory
@@ -346,7 +419,9 @@
                         </li>
                         <li class="blog-content-no-indent">
                             Feedback Control Systems
-                            <a href="https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/1bfc976fcead1982d90c5057511e5ef7_MIT16_30F10_lec05.pdf"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                            <a
+                                href="https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/1bfc976fcead1982d90c5057511e5ef7_MIT16_30F10_lec05.pdf"><i
+                                    class="fas fa-arrow-up-right-from-square"></i></a>
                         </li>
                     </ol>
 

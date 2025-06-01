@@ -159,7 +159,7 @@
                         state-of-the-art performances. My last article provides a concise explanation about the core
                         features of Transformer, and I highly recommend readers who are unfamiliar with Transformer to
                         go through it first before moving on to the next sections.</p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         However, Transformer suffers from serious resource consumption. The self-attention mechanism
                         allows every token to attend to every position within the sequence. Consequently, the
                         computational and memory complexity of self-attention mechanism scale quadratically to the
@@ -171,7 +171,7 @@
                         performance benchmarking, discussing the motivations, core techniques, and pros and cons of each
                         variation.
                     </p>
-                    <h3>Sparse Transformer</h3>
+                    <h3 class="blog-title">Sparse Transformer</h3>
                     <p class="blog-content">
                         When we are working with sequential data, like text, video, or music, we usually don’t process
                         the entire context but only focus on the key information we are looking for. Therefore, the
@@ -181,7 +181,7 @@
                         behavior of concentrating attention weights on necessary parts of the sequence. This observation
                         suggests that some form of sparsity can be introduced to improve model complexity without
                         significantly affecting the performance.</p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         To incorporate sparsity with self-attention, Sparse Transformer proposes the Factorized
                         Self-Attention. For each attention head, it computes attention on only a subset of positions
                         defined according some task-specific sparsity definitions. The outputs of each head are later
@@ -190,14 +190,14 @@
                         steps as the positions are scattered across a fixed number of attention heads. In [1],
                         researchers demonstrated how to apply factorized attention to data with and without periodic
                         structure, showing the potential of Sparse Transformer to handle all kinds of task.</p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Sparse Transformer is capable of avoiding extra computations on poorly related positions and
                         reduces computational complexity from quadratic to sub-quadratic, while achieve comparable or
                         better performance comparing to standard Transformer. Moreover, since factorized self-attention
                         keeps track of only the necessary information, Sparse Transformer presents a better ability to
                         handle long-term dependencies.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Nevertheless, Sparse Transformer comes with some obvious shortcomings. First and foremost,
                         researchers have to construct a precise and accurate sparsity definition prior to the use of
                         Sparse Transformer since sparsity cannot be learned via training. Such challenging prerequisite
@@ -208,7 +208,7 @@
                         to handle very complicated tasks.
                     </p>
 
-                    <h3>Transformer-XL</h3>
+                    <h3 class="blog-title">Transformer-XL</h3>
                     <p class="blog-content">
                         Transformer-XL provides a different enhancement approach aiming to improve model expressivity
                         and evaluation speed. Aside from the fact that Transformer cannot effectively model long range
@@ -220,7 +220,7 @@
                         concept of segment-level recurrence with state reuse accompanied with relative positional
                         encoding to resolve this issue.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Segment-level recurrence with state reuse tackles content fragmentation with the idea of reuse
                         and extend. The hidden state sequence computed for the previous segment is fixed and cached to
                         be reused as an extended context when the model processes the next new segment. This method
@@ -229,7 +229,7 @@
                         linearly with respect to the number of layers and segment length; in other words, Transformer-XL
                         can achieve long range dependency modeling with linear runtime.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         One remarkable point is that the original absolute positional encoding no longer fits as the
                         model has no information to distinguish the positional difference between segments. Hence, Dai
                         et al. utilizes the relative positional encoding which encodes the relative positional
@@ -239,7 +239,7 @@
                     </p>
                     <img src="transformer-xl.png" class="blog-img" />
                     <img src="transformer-xl2.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         After modifying the Transformer with the above two features, Transformer-XL achieves a dramatic
                         1874 times speed-up during evaluation comparing to standard Transformer. The cache and reuse of
                         previous segments eliminate the need of computing with the entire previously-seen sequence, and
@@ -247,7 +247,7 @@
                         Transformer-XL achieves the lowest perplexities among other state-of-the-art models on multiple
                         NLP tasks, indicating the success in expressivity improvement through history caching.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         On the other hand, Transformer-XL requires extra memory to store the cached hidden sequence
                         states, which further intensify the existing memory issue. When it comes to modeling very long
                         sequences, Transformer-XL might be requiring more memory than standard Transformer. Despite of
@@ -255,7 +255,7 @@
                         Transformer-XL in practice.
                     </p>
 
-                    <h3>Reformer</h3>
+                    <h3 class="blog-title">Reformer</h3>
                     <p class="blog-content">
                         Reformer approaches memory constraint reduction by reconstructing the model architecture of
                         Transformer. Kitaev et al. discovered that backpropagation of deep Transformer is memory-intense
@@ -264,7 +264,7 @@
                         activations for large Transformer-based models, hence the memory required for activation storage
                         cannot be ignored.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Inspired by the RevNet (Gomez et al. 2017), Reformer replaces the deep feedforward layers with
                         reversible layers. Reversible layers allow the activations at any given layer to be recovered
                         from the activations at the following layer, using only the model parameters. This modification
@@ -277,7 +277,7 @@
                         CPU and accelerator.
                     </p>
                     <img src="lsh.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         After handling the feedforward layers, Kitaev et al. proposed the locality-sensitive hashing
                         (LSH) attention as a memory-efficient way to compute attention scores. Since the output of
                         softmax is dominated by the largest elements, we only need to focus on the keys that are closest
@@ -291,14 +291,14 @@
                     </p>
                     <img src="reformer1.png" class="blog-img" />
                     <img src="reformer2.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         The major improvement achieved by Reformer is to lower memory complexity without the expense of
                         accuracy. By comparing the data presented in the tables above, Reformer reduces both memory and
                         time complexity to scale linearly with respect to sequence length while maintaining similar
                         performance as Transformer. Smaller memory requirement also loosen the hardware requirement to
                         train large Reformer.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Working with the new architecture, we can easily tell that the computational complexity of
                         Reformer significantly increases. A lot of recomputation has to be done during every
                         backpropagation in order to restore the intermediate activations, which dramatically raise the
@@ -310,13 +310,13 @@
                         high-performance and high-responsive extension.
                     </p>
 
-                    <h3>Linformer</h3>
+                    <h3 class="blog-title">Linformer</h3>
                     <img src="linformer.png" class="blog-img" />
                     <p class="blog-content">
                         Analogous to Reformer using multi-round LSH attention to approximate ordinary self-attention,
                         Linformer proposed another approximation method: linear self-attention.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Wang et al.[5] made a crucial discovery that the context matrix (i.e., the output matrix of the
                         softmax function whose input is the scale dot product of query and key matrices) possesses the
                         low-rank property. The figure above displays the result of applying singular value decomposition
@@ -330,7 +330,7 @@
                         O(nk), where n stands for sequence length and k stands for rank.
                     </p>
                     <img src="linformer-attention.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         However, approximating with SVD directly will result in additional computations as SVD has to be
                         performed for every attention matrix. As a resolution, Wang et al. adds two extra projection
                         layers to allow the model to learn the approximation. The model will first project the original
@@ -341,13 +341,13 @@
                     </p>
                     <img src="linformer1.png" class="blog-img" />
                     <img src="linformer2.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Linformer presents substantial improvement in inference efficiency. We can see from the plot
                         that as the input sequence length increases, the inference time of Linformer maintains constant
                         while that of Transformer grows linearly. The table below empirically delivers the dramatic
                         inference speed-up and memory savings as sequence length increases.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Despite of the boost in time and memory efficiency, Linformer also does not demonstrate
                         performance improvement. In [5], researchers conducted several trials to discover the
                         relationship between Linformer performance and approximation order i.e., rank, but the best they
@@ -356,13 +356,13 @@
                         outcomes of the same level.
                     </p>
 
-                    <h3>Longformer</h3>
+                    <h3 class="blog-title">Longformer</h3>
                     <p class="blog-content">
                         Longformer reconstructs self-attention mechanism with local and global attentions. Very similar
                         to Sparse Transformer, Beltagy discovers the patterns of the attention matrices and introduce a
                         different method to apply sparsity.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Local attention, analogous to convolution, employs a fixed-size window attention that slides
                         over the sequence. To create a large receptive field, Longformer uses multiple stacked layers of
                         local attention, hence the top layers have access to all input locations and capable of building
@@ -373,7 +373,7 @@
                         complexity to O(nw), which can be deemed as linear when window size very small comparing to
                         sequence length.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         The sparsity structure of Longformer is defined in the task-specific global attention. A token
                         that is set with global attention attends to all tokens across the sequence, and all tokens in
                         the sequence attend to it. Since the number of such tokens is small relative to and independent
@@ -381,7 +381,7 @@
                     </p>
                     <img src="longformer1.png" class="blog-img" />
                     <img src="longformer2.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         From the diagrams, we can observe that Longformer successfully practices its theoretical
                         complexity reductions. What’s more worth pointing out is its performance improvement on some
                         bidirectional tasks, proving that the combination of local and global attentions effectively
@@ -397,7 +397,7 @@
                         increase training and evaluation runtime.
                     </p>
 
-                    <h3>Performer</h3>
+                    <h3 class="blog-title">Performer</h3>
                     <p class="blog-content">
                         Finally, we are at the last Transformer variation - Performer. Choromanski et al. [7] evaluated
                         the previous extensions and pointed out some general limitations. Existing enhancements do not
@@ -409,14 +409,14 @@
                         constructing special GPU operations. Moreover, the additional constraints may impede application
                         to long-sequence problems where approximations of the attention mechanism are not sufficient.
                     </p>
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         To properly approximate attention mechanism, Performer proposes the Fast Attention Via positive
                         Orthogonal Random Features Mechanism (FAVOR+). FAVOR+ consists of two components, orthogonal
                         positive random feature mapping and fast attention, where the former approximates the standard
                         attention mechanism and the latter leverages the approximation for efficient computation.
                     </p>
                     <img src="kernel-approx.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Recalling the equation for self-attention, the attention score is computed with a softmax kernel
                         whose arguments are query and key vectors. In order to practice fast attention discussed in the
                         next paragraph, the softmax kernel is approximated with positive orthogonal random features.
@@ -431,7 +431,7 @@
                         complexities.
                     </p>
                     <img src="fast-attention.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Fast attention achieves complexity reduction by altering the computation order. After projecting
                         the query and key matrices with orthogonal positive random feature mapping, we are no longer
                         restricted to compute the product of query and key matrices first. We follow the computation
@@ -440,7 +440,7 @@
                         projected dimension, and hidden dimension, respectively.
                     </p>
                     <img src="performer-runtime.png" class="blog-img" />
-                    <p class="blog-content">
+                    <p class="blog-content-no-indent">
                         Experiments show that hyperbolic estimator provides additional accuracy improvements that are
                         strictly better than those with twice as many random features, indicating that positivity really
                         help achieve optimal approximation. Orthogonality is also shown to reduce MSE (mean squared
@@ -457,7 +457,7 @@
                         preparation is crucial before using Performer.
                     </p>
 
-                    <h3>Conclusion</h3>
+                    <h3 class="blog-title">Conclusion</h3>
                     <p class="blog-content">
                         In this article, we went through 6 popular efficient extensions of Transformer, learning about
                         the techniques utilized to improve performance as well as complexity reduction. These studies
@@ -468,7 +468,7 @@
                         high-performance options for real-life applications and boost applicable developments.
                     </p>
 
-                    <h3>Citation</h3>
+                    <h3 class="blog-title">Citation</h3>
                     <ol>
                         <li class="blog-content-no-indent">
                             Rewon Child, Scott Gray, Alec Radford, Hya Sutskever, “Generating Long Sequences with Sparse
