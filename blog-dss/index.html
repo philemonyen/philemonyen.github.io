@@ -15,12 +15,6 @@
 
     <link href="../template/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="apple-touch-icon" href="../template/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="../template/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="../template/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="../template/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="../template/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="../template/assets/img/favicons/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="theme-color" content="#712cf9">
 
@@ -110,7 +104,7 @@
     </style>
 
     <!-- Custom styles for this ../template -->
-    <link href="../template/carousel/carousel.css" rel="stylesheet">
+    <link href="../template/styles/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -191,22 +185,22 @@
                     <p class="blog-content-no-indent">Let’s translate and summarize this proposition with plain English:
                         For any given state space with
                         a well-behaved state matrix, there exists a DSS, parameterized by a complex vector w and a
-                        diagonal matrix Lambda, computing the same kernel. In other words, this proposition states that
+                        diagonal matrix &Lambda;, computing the same kernel. In other words, this proposition states that
                         DSS possesses adequate expressivity to represent any well-behaving state space, despite of its
                         simplicity.</p>
                     <p class="blog-content-no-indent">Unfortunately, there is an underlying risk of numerical
                         instability if we directly used DSS
                         kernels acquired via this equation. There is a chance for the element-wise exponential matrix P
-                        to contain large positive values, which will make real parts of elements Lambda positive and
+                        to contain large positive values, which will make real parts of elements &Lambda; positive and
                         consequently result in unstable training on long inputs. To address this issue, two variations
                         of DSS are proposed, DSS-EXP and DSS-SOFTMAX.</p>
                     <h4>Variation I - DSS-EXP</h4>
                     <p class="blog-content">
-                        This variation augments the proposition by posing an additional restriction to Lambda. By
-                        restricting the real part of elements of Lambda to be negative, the possibility of encountering
+                        This variation augments the proposition by posing an additional restriction to &Lambda;. By
+                        restricting the real part of elements of &Lambda; to be negative, the possibility of encountering
                         very large values during kernel computation is directly eliminated. However, this
                         straightforward approach comes with an obvious disadvantage of limiting the learning space of
-                        Lambda, which consequently reduces model expressivity. Moreover, it is unclear whether the
+                        &Lambda;, which consequently reduces model expressivity. Moreover, it is unclear whether the
                         restriction of negative real parts could be detrimental for some tasks. As a result, DSS-EXP
                         provides a simple approach to achieve stable model training while its performance trade-off may
                         restrain its application in specific fields.
@@ -222,7 +216,7 @@
                         softmax well-defined on the entire complex field, row sums are computed as the square of the
                         modulus to prevent complex division. As a result, DSS-SOFTMAX successfully handles both
                         numerical instability and function singularities without sacrificing the learning space of
-                        Lambda.
+                        &Lambda;.
                     </p>
 
                     <h3>Expressivity & Performance</h3>
@@ -235,7 +229,7 @@
                     </p>
                     <h4>Theoretical Expressivity - DSS-EXP</h4>
                     <p class="blog-content">
-                        With computed Lambda and ZOH timestep , we can obtain the discretization with respect to the
+                        With computed &Lambda; and ZOH timestep , we can obtain the discretization with respect to the
                         kernel obtained via equation (1)
                     </p>
                     <img src="dss-exp-discretization.png" class="blog-img" />
@@ -254,7 +248,7 @@
                         ranging from complete memorization to full forgetting, making it a good candidate for handling
                         long range dependency (LRD).</p>
                     <h4>Theoretical Expressivity - DSS-SOFTMAX</h4>
-                    <p class="blog-content">With computed Lambda and ZOH timestep Delta, we can obtain the
+                    <p class="blog-content">With computed &Lambda; and ZOH timestep Delta, we can obtain the
                         discretization with respect to the kernel obtained via equation (2)</p>
                     <img src="dss-softmax-discretization.png" class="blog-img" />
                     <p class="blog-content-no-indent">With the same independence implied with diagonal state matrix, we
